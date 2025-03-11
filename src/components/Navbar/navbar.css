@@ -1,0 +1,25 @@
+header{
+    background-color: black;
+    height:50px ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-menu{
+    width: 30%;
+    display: flex;
+    color: aliceblue;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-menu a{
+    text-decoration: none;
+    color: aliceblue;
+
+}
+
+p{
+    color: aliceblue;
+}
