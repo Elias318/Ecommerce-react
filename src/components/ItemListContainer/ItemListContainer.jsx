@@ -1,6 +1,6 @@
 import '../ItemListContainer/itemListContainer.css'
 
-function ItemListContainer({mensajeBienvenida}){
+function ItemListContainer({greetings}){
 
     
 
@@ -9,7 +9,7 @@ function ItemListContainer({mensajeBienvenida}){
         <>
 
         <div className='container-products'>
-            <h2>{mensajeBienvenida}</h2>
+            <h2>{greetings}</h2>
         </div>
            
         </>
