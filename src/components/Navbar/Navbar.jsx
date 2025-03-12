@@ -10,15 +10,15 @@ function Navbar(){
     return(
     <>
        <header className=''>
-    <div>
-        <img src="#" alt="Logo" />
+    <div className='container-logo'>
+        <img src="./public/images/logosinbg.png" alt="Logo" />
     </div>
 
     <ul className='container-menu'>
         <li><a href="">Inicio</a></li>
-        <li><a href="">Inicio</a></li>
+        <li><a href="">Catalogo</a></li>
 
-        <li><a href="">Inicio</a></li>
+        
 
         
 

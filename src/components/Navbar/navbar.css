@@ -1,6 +1,6 @@
 header{
     background-color: black;
-    height:50px ;
+    padding: 10px ;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -16,10 +16,20 @@ header{
 
 .container-menu a{
     text-decoration: none;
+    
     color: aliceblue;
 
 }
 
+
+.container-menu li{
+    list-style: none;
+}
 p{
     color: aliceblue;
+}
+
+.container-logo img{
+   
+    max-width: 70px;
 }
