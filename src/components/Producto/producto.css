@@ -1,0 +1,43 @@
+
+
+.contenedorProducto{
+    
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px 20px;
+    background-color: #393E46;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.contenedorProducto h3{
+    color: #00ADB5;
+}
+
+.contenedorProducto p{
+    color: #EEEEEE;
+}
+
+.btnComprar{
+    background: linear-gradient(90deg, #00ADB5, #008A91);
+    color: #EEEEEE;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #00ADB5;
+    padding: 5px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 173, 181, 0.7);
+}
+
+.btnComprar:hover {
+    background: linear-gradient(90deg, #008A91, #00ADB5);
+    box-shadow: 0 0 15px #00ADB5;
+    transform: scale(1.1);
+}
