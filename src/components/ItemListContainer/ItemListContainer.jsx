@@ -1,27 +1,76 @@
 import './itemListContainer.css'
-import { productos } from '../../../public/js/productos'
 import Producto from '../Producto/Producto'
+import { useEffect, useState } from 'react';
+import { fetchData } from '../../../public/js/fetchData';
+import Loader from '../Loader/loader';
+import { useParams } from 'react-router';
 
-function ItemListContainer({greetings}){
+function ItemListContainer(){
 
+    const[loader,setLoader] = useState(true);
+
+    const[todosLosProductos,setTodosLosProductos] = useState([]);
+
+    const{categ} = useParams();
     
-console.log(productos);
-    return(
 
+
+
+    useEffect(()=>{
+        
+            
+      
+
+            fetchData(false)
+            .then(response => {
+            setTodosLosProductos(response);
+            console.log(categ);
+            console.log(todosLosProductos);
+
+            setLoader(false);
+            })
+            .catch((err)=>console.error(err))
+        
+
+        },[categ])
+
+
+
+        const productosFiltrados = () => {
+            if (!categ){
+                return todosLosProductos; 
+            } else{
+                return todosLosProductos.filter(el => el.categoria === categ);
+
+            }
+
+        };
+
+    return(
+       
         <>
+
+
         <div className='contenedorGralProductos'>
         <div className='contenedorProductos'>
             
+            
+            { 
+                loader ? <Loader/> :
 
-            {productos.map(el=>{
-                return(
+                    productosFiltrados().length > 0 ? 
 
-                    <Producto key={el.id} producto = {el}/>
-                )
-            })}
+                        productosFiltrados().map(el => <Producto key={el.id} producto={el} />)
+                    :
+
+                    <p>No hay productos disponibles para la categoría "{categ}".</p>
 
 
-          
+                        
+            
+                
+                 
+            }          
 
         </div>
         </div>

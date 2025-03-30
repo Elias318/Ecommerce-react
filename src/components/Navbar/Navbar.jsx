@@ -2,6 +2,7 @@
 import CartWidget from '../CartWidget/CartWidget';
 import '../Navbar/navbar.css'
 
+import { Link} from 'react-router';
 
 function Navbar(){
 
@@ -15,7 +16,21 @@ function Navbar(){
     </div>
 
     <ul className='container-menu'>
-        <li><a href="">Inicio</a></li>
+
+        <Link to="/">
+        <li>Inicio</li>
+        </Link>
+
+        <Link to="/categoria/computadora">
+        <li>Computadora</li>
+        </Link>
+
+        <Link to="/categoria/consola">
+        <li>Consola</li>
+        </Link>
+            
+        
+        
         <li><a href="">Catalogo</a></li>
 
         
@@ -25,7 +40,12 @@ function Navbar(){
     </ul>
 
     <div className='container-carrito'>
-       <CartWidget/>
+
+        <Link to="/carrito">
+            <CartWidget/>
+        
+        
+        </Link>
     </div>
 </header>
 
