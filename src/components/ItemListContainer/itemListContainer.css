@@ -10,9 +10,9 @@
     
 }
 
-.contenedorGralProductos{
+.contenedor_gral{
     background-color: #232931; /* Fondo oscuro elegante */
-    padding: 20px;
+    padding: 80px;
     
     height: 100vh;
 }

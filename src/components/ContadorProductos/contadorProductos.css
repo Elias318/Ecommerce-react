@@ -1,0 +1,12 @@
+.contador{
+    display: flex;
+    gap: 5px;
+    font-weight: 700;
+  
+}
+
+.btnCantidad{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 100%;
+}

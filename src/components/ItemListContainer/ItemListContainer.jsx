@@ -51,7 +51,7 @@ function ItemListContainer(){
         <>
 
 
-        <div className='contenedorGralProductos'>
+        <div className='contenedor_gral'>
         <div className='contenedorProductos'>
             
             
