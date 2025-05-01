@@ -1,10 +1,10 @@
 
 import './App.css'
-import Footer from './components/Footer/Footer'
+
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { BrowserRouter, Routes, Route } from 'react-router';
 
-import Navbar from './components/Navbar/navbar'
+import Navbar from './components/Navbar/Navbar'
 import DetalleProducto from './components/DetalleProducto/DetalleProducto';
 import { ConstextProvider } from './context/context';
 import Carrito from './components/carrito/carrito';
@@ -42,7 +42,7 @@ function App() {
 
       
     
-      <Footer/>
+
     </>
   )
 }
