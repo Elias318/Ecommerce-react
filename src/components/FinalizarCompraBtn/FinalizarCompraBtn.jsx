@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './finalizarCompraBtn.css';
+import './FinalizarCompraBtn.css';
 import Carrito from '../carrito/carrito';
 import { useAppContext } from '../../context/context';
 import { addDoc } from 'firebase/firestore';
