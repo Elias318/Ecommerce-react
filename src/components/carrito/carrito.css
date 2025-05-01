@@ -1,0 +1,11 @@
+.contenedor_gral_carrito{
+    background-color: #232931; /* Fondo oscuro elegante */
+    padding: 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    gap: 50px;
+}

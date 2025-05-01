@@ -1,0 +1,16 @@
+.filaCarrito  {
+
+    text-align: center;
+}
+
+.filaCarrito td,th {
+
+    padding: 0 10px;
+    color: white;
+
+}
+
+
+.filaCarritoImg{
+    max-height: 100px;
+}

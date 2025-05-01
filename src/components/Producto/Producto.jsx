@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import './producto.css'
 import { Link, useParams} from 'react-router';
+import { useAppContext } from '../../context/context';
 
 function Productos({producto}){
 
-    const {id,nombre,descripcion,descripcionCorta,precio} = producto;
+    const {id,nombre,precio,categoria, descripcion,img} = producto;
     
-
+    const {agregarAlCarrito} = useAppContext();
     
    
 
@@ -14,13 +15,17 @@ function Productos({producto}){
         
 
         <div className="contenedorProducto">
-            <img src="#" alt="Imagen producto" />
+            <img src={img} alt="Imagen producto" />
             <h3>{nombre}</h3>
-            <p>{descripcionCorta}</p>
+            <p>{descripcion}</p>
 
 
-            <Link to={`/detalle/${id}`}>
-                <button className='btnComprar'>Comprar</button> 
+          
+                <button className='btnComprar'onClick={()=> agregarAlCarrito(producto, 1)}>Comprar</button> 
+         
+
+             <Link to={`/detalle/${id}`}>
+             <button className='btnComprar'>Ver Detalle</button> 
             </Link>
            
 

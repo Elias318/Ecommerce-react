@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 
 import Navbar from './components/Navbar/navbar'
 import DetalleProducto from './components/DetalleProducto/DetalleProducto';
+import { ConstextProvider } from './context/context';
+import Carrito from './components/carrito/carrito';
 function App() {
  
 
@@ -14,7 +16,7 @@ function App() {
       
 
         
-
+      <ConstextProvider>
         <BrowserRouter>
 
           <Navbar/>
@@ -22,7 +24,7 @@ function App() {
 
             <Route path='/'  element = { <ItemListContainer />} />
             <Route path='/categoria/:categ'  element = { <ItemListContainer />} />
-            <Route path='/carrito'  element = { <h2>Esto seria el carrito</h2>} />
+            <Route path='/carrito'  element = { <Carrito/>} />
 
 
             <Route path="/detalle/:id"  element = { <DetalleProducto/>} />
@@ -31,6 +33,7 @@ function App() {
         
         
         </BrowserRouter>
+      </ConstextProvider>
 
 
           

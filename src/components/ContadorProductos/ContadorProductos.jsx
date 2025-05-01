@@ -1,22 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './contadorProductos.css'
 
-function ContadorProductos() {
+function ContadorProductos({cantidadDelProducto, resetearContador, setResetCantidad}) {
 
     const [cantidad, setCantidad] = useState(1);
 
-    // Incrementar cantidad
+    useEffect(() => {
+        if (resetearContador) {
+            setCantidad(1);
+            cantidadDelProducto(1); 
+            setResetCantidad(false);
+        }
+    }, [resetearContador]);
+    
     function incrementar() {
-        setCantidad (cantidad + 1);
+        const nuevaCantidad = cantidad + 1;
+        setCantidad (nuevaCantidad);
+        cantidadDelProducto(nuevaCantidad);
       
     }
 
-    // Disminuir cantidad
+   
     function decrementar() {
         if (cantidad > 1) {
-            setCantidad(cantidad -1);
-
-            
+            const nuevaCantidad = cantidad - 1;
+            setCantidad(nuevaCantidad);
+            cantidadDelProducto(nuevaCantidad);
         }
     }
 

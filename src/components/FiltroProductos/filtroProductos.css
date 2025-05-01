@@ -1,0 +1,17 @@
+.contenedor_filtro{
+    display: flex;
+    gap: 20px;
+}
+
+.btnCategoria {
+    padding: 10px 10px;
+    background-color: #393E46;
+    color: #fff;
+    border-radius: 20px;
+}
+
+
+.btnCategoria.activo {
+    background-color: #00ADB5;
+    color: #fff;
+}

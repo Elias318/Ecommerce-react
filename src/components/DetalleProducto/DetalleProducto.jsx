@@ -5,128 +5,71 @@ import { fetchData } from '../../../public/js/fetchData';
 import Loader from '../Loader/loader';
 import ContadorProductos from '../ContadorProductos/ContadorProductos';
 import { productos } from '../../../public/js/productos';
+import { useAppContext } from '../../context/context';
 
-function DetalleProducto(){
+function DetalleProducto() {
+    
+    const { id } = useParams();
+    const { todosLosProductos,agregarAlCarrito } = useAppContext();
+    const [producto, setProducto] = useState(null);
+    const [loader, setLoader] = useState(true);
+    const[cantidadFinal, setCantidadFinal] = useState(1);
+    const [resetCantidad, setResetCantidad] = useState(false);
+
+    useEffect(() => {
+        if (todosLosProductos.length > 0) {
+            const prod = todosLosProductos.find(p => p.id === id || p.id === parseInt(id));
+            setProducto(prod);
+            setLoader(false);
+        }
+    }, [todosLosProductos, id]);
+
+    const obtenerCantidad = (valor) =>{
+            setCantidadFinal(valor);
+    }
+
+    
 
    
-    
-    const {id} = useParams();
 
-    
-    const [productoAMostrar, setProductoAMostrar] = useState(null);
-    const [loader, setLoader] = useState(true);
+    return (
+        <div className='contenedor_gral_detalle_producto'>
+            {loader ? <Loader /> :
+                <>
+                    <div className='contenedor_detalle_producto'>
+                        {producto ?
+                            <>
+                                <div className='contenedor_img_producto'>
+                                    <img src={producto.img } alt={producto.nombre} />
+                                </div>
 
+                                <div className='contenedor_descripcion'>
+                                    <div className='header_detalle'>
+                                        <span>{producto.categoria}</span>
+                                    </div>
+                                    <h2 className='detalle_titulo'>{producto.nombre}</h2>
+                                    <h3 className='detalle_precio'>$ {producto.precio}</h3>
 
-    
-     useEffect(()=>{ 
+                                    <div className='contenedor_comprar'>
+                                        <ContadorProductos cantidadDelProducto={obtenerCantidad} resetearContador={resetCantidad} setResetCantidad={setResetCantidad} />
+                                       
+                                        <button className='btnComprar'  onClick={() => {agregarAlCarrito(producto, cantidadFinal);setResetCantidad(true);}}>Comprar</button>
+                                    </div>
+                                    <div className='contenedor_descripcion_producto'>
+                                        <p>{producto?.descripcion}</p>
+                                    </div>
+                                </div>
+                            </>
+                            :
+                            <p>Producto no encontrado.</p>
+                        }
+                    </div>
 
-        
-      fetchData(false)
-              .then(response => {
-                
                     
-                const productoAMostrar = response.find(el=> el.id === parseInt(id));
-                setProductoAMostrar(productoAMostrar);
-                setLoader(false);
-
-              })
-              .catch((err)=>console.error(err))
-
-
-     }, []);
-
-
-        function agregarAlCarrito(producto){
-            const nuevoProducto ={
-                ...producto,
-
-                stock: 1,
-            
+                </>
             }
-            console.log("Vas a agregar",nuevoProducto);
-            }
-    
-
-
-
-        return(
-        
-            
-
-                <div className='contenedor_gral'>
-
-                    {
-
-
-                        loader ? <Loader/>: 
-
-                        <>
-                        
-                            <div className='contenedor_detalle_producto'>
-                                
-
-                                {
-
-                                    productoAMostrar ?
-                            
-                                    <>  
-                                        <div className='contenedor_img_producto'>
-                                            <img src="../logosinbg.png" alt="Imagen del producto" />
-                                        </div>
-
-                                        <div className='contenedor_descripcion'>
-
-                                            <div className='header_detalle'>
-                                                <span>{productoAMostrar.categoria}</span>
-                                            </div>
-                                            <h2 className='detalle_titulo'>{productoAMostrar.nombre}</h2>
-                                            
-                                            <h3 className='detalle_precio'>$ {productoAMostrar.precio}</h3>
-
-
-                                            <div className='contenedor_comprar'>
-
-                                                <ContadorProductos/>
-                                                <button className='btnComprar' onClick={()=>agregarAlCarrito(productoAMostrar)}>Comprar</button>
-                                            </div>
-
-                                        </div>
-                                    </>
-                        
-                                :
-                                    
-                                <p> asdasdsada</p>
-
-                                }
-
-                                
-                            
-                            </div>
-
-                            <div className='contenedor_descripcion_producto'>
-                                <p>
-                                    {productoAMostrar.descripcion}
-                                </p>
-                                    
-                            </div>
-                        
-                        
-                        </>
-
-                       
-                    }
-                   
-                    
-                
-                    
-
-
-                    
-              
-                </div>
-               
-
-        );
+        </div>
+    );
 }
 
-export default DetalleProducto
+export default DetalleProducto;

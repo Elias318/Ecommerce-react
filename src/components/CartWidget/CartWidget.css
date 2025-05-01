@@ -1,4 +1,18 @@
+.contenedor-carrito{
+ 
+ display: flex;
+ gap: 10px;
+ color: white;
+
+}
+
 .contenedor-carrito i{
+ 
     font-size: 20px;
     color: white;
+}
+
+.contenedor-carrito a{
+    text-decoration: none;
+    border: none;
 }
