@@ -1,4 +1,4 @@
-import './ItemListContainer.css'
+import './itemListContainer.css'
 import Producto from '../Producto/Producto'
 import { useEffect, useState } from 'react';
 import { fetchData } from '../../../public/js/fetchData';
