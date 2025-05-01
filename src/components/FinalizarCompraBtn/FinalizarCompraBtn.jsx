@@ -5,10 +5,13 @@ import { useAppContext } from '../../context/context';
 import { addDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { collection } from 'firebase/firestore';
+import { Navigate, useNavigate } from 'react-router';
 
 const FinalizarCompraBtn = () => {
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
-      const{ carrito } =useAppContext();
+    const{ carrito } =useAppContext();
+    const navigate = useNavigate();
+
 
     function abrirFormularioFinalizarCompra() {
         setMostrarFormulario(true);
@@ -22,7 +25,7 @@ const FinalizarCompraBtn = () => {
     const ordenesCollection = collection(db, "ordenes");
 
     const enviarDatosOrden= (e)=>{
-        
+        e.preventDefault();
         const nombre = e.target.nombre.value;
         const email = e.target.email.value;
         const direccion = e.target.direccion.value;
@@ -41,6 +44,7 @@ const FinalizarCompraBtn = () => {
        
         addDoc(ordenesCollection, nuevaOrden).then(response =>{
             alert("creaste correctamente tu orden con el id: "+ response.id);
+            navigate("/");
         })
         .catch(err => console.log(err));
     };
